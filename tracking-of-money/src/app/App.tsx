@@ -1,45 +1,47 @@
-import { Text, View, StyleSheet, TextInput, Button } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { Input } from "../../shared/Input/input";
+import { Colors, Gaps } from "../../shared/tokens";
+import { ButtonCastom } from "../../shared/Button/button";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={styles.boxtitle}>
-        <Text style={styles.title}>учёт финансов</Text>
-        <Text>проект Симанова Александра</Text>
-      </View>
-      
-      
 
-      <View>
-        <View style={styles.inputText}>
-          <Text style={styles.numbr}>Введите сумму:</Text>
-          <TextInput style={styles.numbr} value="3000"/>
+      <View style={styles.login}>
+        <View style={styles.title}>
+          <Text style={{fontSize: 27, color: Colors.placText_gray}}>учёт финансов</Text> 
+        </View>
+        <View style={styles.boxinputs}>
+          <Input placeholder="Email"/>
+          <Input isPassowrd placeholder="Пароль"/>
+          <ButtonCastom text="Войти"/> 
+        </View>
+        <View style={styles.resetpass}>
+          <Text style={{color: Colors.links }}>Восстановать пароль</Text>
         </View>
       </View>
-        <Button title="сохранить" />  
+      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "lightyellow",
-    
+    backgroundColor: Colors.black,
+    flex: 1,
+    justifyContent: "center",
+    padding: 55,
+  },
+  login: {
+    gap: Gaps.g50,
   },
   title: {
-    color: "black",
-    fontSize: 34,
-  },
-  boxtitle: {
-    marginTop: 40,
     alignItems: "center"
   },
-  inputText: {
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column-reverse",
-    gap: 10,
+  boxinputs: {
+    gap: Gaps.g16,
   },
-  numbr: {
+  resetpass: {
+    alignItems: "center",
   }
 });
