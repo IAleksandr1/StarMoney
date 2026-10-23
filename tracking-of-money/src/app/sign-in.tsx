@@ -1,62 +1,60 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
-import { Input } from "../../shared/Input/input";
-import { Colors, Gaps } from "../../shared/tokens";
-import { ButtonCastom } from "../../shared/Button/button";
-import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { useAuth } from "../../hooks/useAuth";
+import { ButtonCastom } from "../../shared/Button/button";
+
+import { Colors, Gaps } from "../../shared/tokens";
+import { Input } from "../../shared/Input/input";
 
 export default function SignIn() {
-
   const { signIn } = useAuth();
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-   const onSubmit = () => {
+  const onSubmit = () => {
     const ok = signIn(login, password);
-    if (!ok) setError('Неверный логин или пароль');
+    if (!ok) setError("Неверный логин или пароль");
     // если ok, Stack.Protected сам откроет (tabs)
   };
 
   return (
     <View style={styles.container}>
-
       <View style={styles.login}>
         <View style={styles.title}>
-
-          <Text style={{fontSize: 27, color: Colors.placText_gray}}>учёт финансов</Text> 
-          
+          <Text style={{ fontSize: 27, color: Colors.placText_gray }}>
+            учёт финансов
+          </Text>
         </View>
         <View style={styles.boxinputs}>
-
-          <Input 
+          <Input
             placeholder="Email"
             value={login}
-            onChangeText={(t) => { setLogin(t); setError(''); }}
+            onChangeText={(t) => {
+              setLogin(t);
+              setError("");
+            }}
             autoCapitalize="none"
           />
-          <Input 
+          <Input
             isPassowrd
             placeholder="Пароль"
             value={password}
-            onChangeText={(t) => { setPassword(t); setError(''); }}
+            onChangeText={(t) => {
+              setPassword(t);
+              setError("");
+            }}
           />
 
-          {error ? <Text style={styles.error}>{error}</Text> : null}  
+          {error ? <Text style={styles.error}>{error}</Text> : null}
 
-          <ButtonCastom 
-            text="Войти"
-            onPress={onSubmit}
-          />
-
+          <ButtonCastom text="Войти" onPress={onSubmit} />
         </View>
 
         <View style={styles.resetpass}>
-          
-          <Text style={{color: Colors.links }}>Восстановать пароль</Text>
-
+          <Text style={{ color: Colors.links }}>Восстановать пароль</Text>
         </View>
-      </View>    
+      </View>
     </View>
   );
 }
@@ -72,7 +70,7 @@ const styles = StyleSheet.create({
     gap: Gaps.g50,
   },
   title: {
-    alignItems: "center"
+    alignItems: "center",
   },
   boxinputs: {
     gap: Gaps.g16,
@@ -80,18 +78,18 @@ const styles = StyleSheet.create({
   resetpass: {
     alignItems: "center",
   },
-  error: { color: '#dc2626' },
+  error: { color: "#dc2626" },
   button: {
-    backgroundColor: '#3b82f6',
+    backgroundColor: "#3b82f6",
     padding: 14,
     borderRadius: 8,
-    alignItems: 'center',
+    alignItems: "center",
   },
-  pressed: { backgroundColor: '#2563eb' },
-  buttonText: { color: '#fff', fontWeight: '600', fontSize: 16 },
+  pressed: { backgroundColor: "#2563eb" },
+  buttonText: { color: "#fff", fontWeight: "600", fontSize: 16 },
   input: {
     borderWidth: 1,
-    borderColor: '#d1d5db',
+    borderColor: "#d1d5db",
     borderRadius: 8,
     padding: 12,
     fontSize: 16,

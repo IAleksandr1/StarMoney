@@ -12,7 +12,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "lightyellow",
     flex: 1,
   },
   title: {

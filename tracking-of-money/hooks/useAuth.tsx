@@ -1,8 +1,8 @@
 // hooks/useAuth.tsx
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-const VALID_LOGIN = 'Александр';
-const VALID_PASSWORD = '123456';
+const VALID_LOGIN = '';
+const VALID_PASSWORD = '';
 
 type AuthContextType = {
   isSignedIn: boolean;
